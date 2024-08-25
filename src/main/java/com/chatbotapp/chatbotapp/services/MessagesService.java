@@ -25,7 +25,7 @@ public class MessagesService {
         return messagesRepository.findById(messageId).orElseThrow(() -> new MessageWithIdNotFoundException(messageId.toString()));
     }
 
-    public Message createMessage(MessageCreationDTO messageCreationDTO){
+    public Message createMessage(MessageCreationDTO messageCreationDTO) {
         Message message = new Message();
         message.setDateCreated(OffsetDateTime.now());
         message.setSender(userService.findById(messageCreationDTO.sender()));

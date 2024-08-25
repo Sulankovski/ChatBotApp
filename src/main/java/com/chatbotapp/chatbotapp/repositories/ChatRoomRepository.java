@@ -10,15 +10,15 @@ import java.util.List;
 @Repository
 public interface ChatRoomRepository extends JpaRepository<ChatRoom, Long> {
     @Query("""
-           select chatRoom
-           from ChatRoom chatRoom
-           """)
+            select chatRoom
+            from ChatRoom chatRoom
+            """)
     List<ChatRoom> listAllChatRooms();
 
     @Query("""
-           select chatRoom
-           from ChatRoom chatRoom
-           where chatRoom.userId.id = :userId
-           """)
+            select chatRoom
+            from ChatRoom chatRoom
+            where chatRoom.userId.id = :userId
+            """)
     List<ChatRoom> getAllChatRoomsForUser(Long userId);
 }

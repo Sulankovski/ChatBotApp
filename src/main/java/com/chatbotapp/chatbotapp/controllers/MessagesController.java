@@ -24,27 +24,27 @@ public class MessagesController {
     private final MessageConverter messageConverter;
 
     @GetMapping("/{messageId}")
-    public MessageDTO findById(@PathVariable Long messageId){
+    public MessageDTO findById(@PathVariable Long messageId) {
         return messageConverter.toMessageDTO(messagesService.findById(messageId));
     }
 
     @PostMapping("/create-message")
-    public MessageDTO createMessage(@RequestBody MessageCreationDTO messageCreationDTO){
+    public MessageDTO createMessage(@RequestBody MessageCreationDTO messageCreationDTO) {
         return messageConverter.toMessageDTO(messagesService.createMessage(messageCreationDTO));
     }
 
     @GetMapping("/all-for-user/{userId}")
-    public List<MessageDTO> getAllMessagesForUser(@PathVariable Long userId){
+    public List<MessageDTO> getAllMessagesForUser(@PathVariable Long userId) {
         return messagesService.getAllMessagesForUser(userId).stream().map(messageConverter::toMessageDTO).collect(Collectors.toList());
     }
 
     @GetMapping("/all-send-by-user/{userId}")
-    public List<MessageDTO> getAllMessagesSendByUser(@PathVariable Long userId){
+    public List<MessageDTO> getAllMessagesSendByUser(@PathVariable Long userId) {
         return messagesService.getAllMessagesSendByUser(userId).stream().map(messageConverter::toMessageDTO).collect(Collectors.toList());
     }
 
     @GetMapping("/all-received-by-user/{userId}")
-    public List<MessageDTO> getAllMessagesReceivedByUser(@PathVariable Long userId){
+    public List<MessageDTO> getAllMessagesReceivedByUser(@PathVariable Long userId) {
         return messagesService.getAllMessagesReceivedByUser(userId).stream().map(messageConverter::toMessageDTO).collect(Collectors.toList());
     }
 }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class UserConverter {
 
-    public UserDTO toUserDTO(User user){
+    public UserDTO toUserDTO(User user) {
         return new UserDTO(
                 user.getId(),
                 user.getDateCreated(),

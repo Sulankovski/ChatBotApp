@@ -15,11 +15,11 @@ import java.time.OffsetDateTime;
 public class UserService {
     private final UserRepository userRepository;
 
-    public User findById(Long userId){
+    public User findById(Long userId) {
         return userRepository.findById(userId).orElseThrow(() -> new UserWithIdNotFoundException(userId.toString()));
     }
 
-    public User createUser(UserCreationDTO userCreationDTO){
+    public User createUser(UserCreationDTO userCreationDTO) {
         User newUser = new User();
         newUser.setDateCreated(OffsetDateTime.now());
         newUser.setName(userCreationDTO.name());
@@ -30,7 +30,7 @@ public class UserService {
         return userRepository.save(newUser);
     }
 
-    public User updateUser(Long userId, UserUpdateDTO userUpdateDTO){
+    public User updateUser(Long userId, UserUpdateDTO userUpdateDTO) {
         User user = findById(userId);
         user.setUsername(userUpdateDTO.userName());
 

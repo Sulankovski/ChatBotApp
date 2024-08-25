@@ -21,19 +21,19 @@ public class UserController {
     private final UserConverter userConverter;
 
     @GetMapping("/{userId}")
-    public UserDTO findById(@PathVariable Long userId){
+    public UserDTO findById(@PathVariable Long userId) {
         return userConverter.toUserDTO(userService.findById(userId));
     }
 
     @PostMapping("/create-user")
     @Transactional(rollbackFor = Exception.class)
-    public UserDTO createUser(@RequestBody UserCreationDTO userCreationDTO){
+    public UserDTO createUser(@RequestBody UserCreationDTO userCreationDTO) {
         return userConverter.toUserDTO(userService.createUser(userCreationDTO));
     }
 
     @PutMapping("/update-user/{userId}")
     @Transactional(rollbackFor = Exception.class)
-    public UserDTO updateUser(@PathVariable Long userId, @RequestBody UserUpdateDTO userUpdateDTO){
+    public UserDTO updateUser(@PathVariable Long userId, @RequestBody UserUpdateDTO userUpdateDTO) {
         return userConverter.toUserDTO(userService.updateUser(userId, userUpdateDTO));
     }
 }

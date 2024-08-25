@@ -23,22 +23,22 @@ public class ChatRoomController {
     private final ChatRoomConverter chatRoomConverter;
 
     @GetMapping("/{chatRoomId}")
-    public ChatRoomDTO findById(@PathVariable Long chatRoomId){
+    public ChatRoomDTO findById(@PathVariable Long chatRoomId) {
         return chatRoomConverter.toChatRoomDTO(chatRoomService.findById(chatRoomId));
     }
 
     @GetMapping("/all")
-    public List<ChatRoomDTO> getAllChatRooms(){
+    public List<ChatRoomDTO> getAllChatRooms() {
         return chatRoomService.listAllChatRooms().stream().map(chatRoomConverter::toChatRoomDTO).collect(Collectors.toList());
     }
 
     @GetMapping("/all-for-user/{userId}")
-    public List<ChatRoomDTO> getAllChatRoomsForUser(@PathVariable Long userId){
+    public List<ChatRoomDTO> getAllChatRoomsForUser(@PathVariable Long userId) {
         return chatRoomService.getAllChatRoomsForUser(userId).stream().map(chatRoomConverter::toChatRoomDTO).collect(Collectors.toList());
     }
 
     @PostMapping("/create-chat-room")
-    public ChatRoomDTO createChatRoom(@RequestBody ChatRoomCreationDTO chatRoomCreationDTO){
+    public ChatRoomDTO createChatRoom(@RequestBody ChatRoomCreationDTO chatRoomCreationDTO) {
         return chatRoomConverter.toChatRoomDTO(chatRoomService.createChatRoom(chatRoomCreationDTO));
     }
 }

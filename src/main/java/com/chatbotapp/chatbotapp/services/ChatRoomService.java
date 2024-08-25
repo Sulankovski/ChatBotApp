@@ -18,7 +18,7 @@ public class ChatRoomService {
     private final ChatRoomRepository chatRoomRepository;
     private final UserService userService;
 
-    public ChatRoom findById(Long chatRoomId){
+    public ChatRoom findById(Long chatRoomId) {
         return chatRoomRepository.findById(chatRoomId).orElseThrow(() -> new ChatRoomWithIdNotFoundException(chatRoomId.toString()));
     }
 
@@ -38,7 +38,7 @@ public class ChatRoomService {
         return chatRoomRepository.save(chatRoom);
     }
 
-    public void updateChatRoom(Long chatRoomId){
+    public void updateChatRoom(Long chatRoomId) {
         ChatRoom chatRoom = findById(chatRoomId);
         chatRoom.setDateUpdated(OffsetDateTime.now());
 

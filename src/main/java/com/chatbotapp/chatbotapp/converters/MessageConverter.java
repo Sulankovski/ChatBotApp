@@ -11,7 +11,7 @@ public class MessageConverter {
     private final UserConverter userConverter;
     private final ChatRoomConverter chatRoomConverter;
 
-    public MessageDTO toMessageDTO(Message message){
+    public MessageDTO toMessageDTO(Message message) {
         return new MessageDTO(
                 message.getId(),
                 message.getDateCreated(),
