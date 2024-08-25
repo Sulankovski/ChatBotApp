@@ -1,0 +1,16 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: ChatBotApp
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://127.0.0.1:5432/ChatBotApp}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASS:123456}
+  jpa:
+    hibernate:
+      ddl-auto: none
+  flyway:
+    schemas: public
+    baseline-on-migrate: true
+
