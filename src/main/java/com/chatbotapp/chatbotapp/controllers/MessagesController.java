@@ -33,6 +33,11 @@ public class MessagesController {
         return messageConverter.toMessageDTO(messagesService.createMessage(messageCreationDTO));
     }
 
+    @GetMapping("/all-for-room/{roomId}")
+    public List<MessageDTO> getAllMessagesForRoom(@PathVariable Long roomId) {
+        return messagesService.getAllMessagesForRoom(roomId).stream().map(messageConverter::toMessageDTO).collect(Collectors.toList());
+    }
+
     @GetMapping("/all-for-user/{userId}")
     public List<MessageDTO> getAllMessagesForUser(@PathVariable Long userId) {
         return messagesService.getAllMessagesForUser(userId).stream().map(messageConverter::toMessageDTO).collect(Collectors.toList());

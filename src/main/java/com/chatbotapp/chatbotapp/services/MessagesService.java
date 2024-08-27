@@ -38,6 +38,10 @@ public class MessagesService {
         return messagesRepository.save(message);
     }
 
+    public List<Message> getAllMessagesForRoom(Long chatRoomId) {
+        return messagesRepository.getAllMessagesForRoom(chatRoomId);
+    }
+
     public List<Message> getAllMessagesForUser(Long userId) {
         return messagesRepository.getAllMessagesForUser(userId);
     }

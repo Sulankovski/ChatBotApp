@@ -17,6 +17,13 @@ public interface MessagesRepository extends JpaRepository<Message, Long> {
     @Query("""
             select message
             from Message message
+            where message.chatRoom.id = :chatRoomId
+            """)
+    List<Message> getAllMessagesForRoom(Long chatRoomId);
+
+    @Query("""
+            select message
+            from Message message
             where message.sender.id = :userId
             """)
     List<Message> getAllMessagesSendByUser(Long userId);
