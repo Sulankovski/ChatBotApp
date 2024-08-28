@@ -25,14 +25,14 @@ public class UserService {
         newUser.setName(userCreationDTO.name());
         newUser.setLastName(userCreationDTO.lastName());
         newUser.setAge(userCreationDTO.age());
-        newUser.setUsername(userCreationDTO.userName());
+        newUser.setUsernameCustom(userCreationDTO.userName());
 
         return userRepository.save(newUser);
     }
 
     public User updateUser(Long userId, UserUpdateDTO userUpdateDTO) {
         User user = findById(userId);
-        user.setUsername(userUpdateDTO.userName());
+        user.setUsernameCustom(userUpdateDTO.userName());
 
         return userRepository.save(user);
     }

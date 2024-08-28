@@ -17,7 +17,7 @@ public class UserConverter {
                 user.getName(),
                 user.getLastName(),
                 user.getAge(),
-                user.getUsername()
+                user.getUsernameCustom()
         );
     }
 }
