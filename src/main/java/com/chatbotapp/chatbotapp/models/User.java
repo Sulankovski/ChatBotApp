@@ -1,6 +1,6 @@
 package com.chatbotapp.chatbotapp.models;
 
-import com.chatbotapp.chatbotapp.common.BaseEntity;
+import com.chatbotapp.chatbotapp.common.models.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

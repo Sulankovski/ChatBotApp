@@ -1,4 +1,4 @@
-package com.chatbotapp.chatbotapp.common;
+package com.chatbotapp.chatbotapp.common.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;

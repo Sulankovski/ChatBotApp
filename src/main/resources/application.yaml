@@ -13,4 +13,5 @@ spring:
   flyway:
     schemas: public
     baseline-on-migrate: true
-
+fastapi:
+  url: http://localhost:8088/your-endpoint

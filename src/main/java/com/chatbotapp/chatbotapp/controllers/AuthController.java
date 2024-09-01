@@ -1,7 +1,8 @@
 package com.chatbotapp.chatbotapp.controllers;
 
-import com.chatbotapp.chatbotapp.dto.LoginRequestDTO;
-import com.chatbotapp.chatbotapp.dto.RegisterRequestDTO;
+import com.chatbotapp.chatbotapp.dto.authorization.AuthorizationResponseDTO;
+import com.chatbotapp.chatbotapp.dto.authorization.LoginRequestDTO;
+import com.chatbotapp.chatbotapp.dto.authorization.RegisterRequestDTO;
 import com.chatbotapp.chatbotapp.services.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
@@ -17,12 +18,12 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/login")
-    public String login(@RequestBody LoginRequestDTO loginRequest) {
-        return authService.login(loginRequest.getEmail(), loginRequest.getPassword());
+    public AuthorizationResponseDTO login(@RequestBody LoginRequestDTO loginRequest) {
+        return authService.login(loginRequest.email(), loginRequest.password());
     }
 
     @PostMapping("/register")
-    public String register(@RequestBody RegisterRequestDTO registerRequestDTO) {
+    public AuthorizationResponseDTO register(@RequestBody RegisterRequestDTO registerRequestDTO) {
         return authService.register(registerRequestDTO);
     }
 }
