@@ -12,8 +12,10 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.HttpHeaders;
+import com.chatbotapp.chatbotapp.dto.ModelResponse;
 
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -65,17 +67,17 @@ public class MessagesService {
     }
 
     public Message createResponseForMessage(MessageCreationDTO messageCreationDTO) {
-//        String content = messageCreationDTO.content();
-//        String url = fastApiProperties.getUrl();
-//
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setContentType(MediaType.APPLICATION_JSON);
-//
-//        HttpEntity<String> request = new HttpEntity<>(content, headers);
-//
-//        ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.POST, request, String.class);
-//        String responseMessage = responseEntity.getBody();
-        String responseMessage = "This message is response from the bot";
+        String content = messageCreationDTO.content();
+        String url = fastApiProperties.getUrl();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        String jsonPayload = "{\"prompt\":\"" + content + "\"}";
+        HttpEntity<String> request = new HttpEntity<>(jsonPayload, headers);
+
+        ModelResponse response = restTemplate.exchange(url, HttpMethod.POST, request, ModelResponse.class).getBody();
+        String responseMessage = response.ai_response();
+//        String responseMessage = "This message is response from the bot";
 
         Message message = new Message();
         message.setDateCreated(OffsetDateTime.now());
