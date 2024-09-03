@@ -28,7 +28,7 @@ public class AuthService {
 
 
     public AuthorizationResponseDTO login(String email, String password) {
-        return authenticate(email, passwordEncoder.encode(password));
+        return authenticate(email, password);
     }
 
     public AuthorizationResponseDTO authenticate(String email, String password) {
@@ -62,6 +62,6 @@ public class AuthService {
 
         user = userRepository.save(user);
 
-        return this.authenticate(user.getEmail(), user.getPasswordHash());
+        return this.authenticate(user.getEmail(), registerRequest.password());
     }
 }
